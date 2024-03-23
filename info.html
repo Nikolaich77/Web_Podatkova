@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/info.css">
+</head>
+<body>
+    <nav class="nav-menu_responsive">
+        <select class="responsive-nav">
+            <option value="0">Home</option>
+            <option value="1">Info</option>
+            <option value="2">Profile</option>
+            <option value="3">Logo</option>
+            <option value="4">Test</option>
+            <option value="5">Game</option>
+        </select>
+    </nav>
+    <nav class="nav-menu">
+        <div class="nav-block"><a href="index.html">Home</a>
+        </div>
+        <div class="nav-block"><a href="#">Info</a></div>
+        <div class="nav-block"><a href="#">Account</a></div>
+        <div class="nav-block"><a href="logo.html">Logo</a></div>
+        <div class="nav-block"><a href="/test/test.html">Test</a></div>
+        <div class="nav-block"><a href="/game/index.html">Game</a></div>
+    </nav>
+    <header>
+        <div class="slogan-ask">
+            <h1>Survey</h1>
+        </div>
+
+    </header>
+    <main>
+        <section>
+            <form id="surveyForm">
+                <label for="educationLevel">Ваш освітній рівень у галузі фінансів:</label><br>
+                <select id="educationLevel" name="educationLevel">
+                    <option value="highSchool">Середня освіта</option>
+                    <option value="bachelor">Бакалавр</option>
+                    <option value="master">Магістр</option>
+                    <option value="phd">Доктор філософії (PhD)</option>
+                    <option value="other">Інше</option>
+                </select><br><br>
+            
+                <label>Як часто ви займаєтеся податковими питаннями:</label><br>
+                <input type="radio" id="frequency1" name="frequency" value="daily">
+                <label for="frequency1">Щоденно</label><br>
+                <input type="radio" id="frequency2" name="frequency" value="weekly">
+                <label for="frequency2">Щотижнево</label><br>
+                <input type="radio" id="frequency3" name="frequency" value="monthly">
+                <label for="frequency3">Щомісяця</label><br>
+                <input type="radio" id="frequency4" name="frequency" value="rarely">
+                <label for="frequency4">Рідко</label><br><br>
+            
+                <label>Як ви оцінюєте складність податкових правил:</label><br>
+                <input type="range" id="taxComplexity" name="taxComplexity" min="1" max="10">
+                <output for="taxComplexity" id="taxComplexityValue"></output><br><br>
+            
+                <label for="taxIssues">Які основні проблеми з оподаткуванням вас турбують:</label><br>
+                <textarea id="taxIssues" name="taxIssues" rows="4"></textarea><br><br>
+
+                <label for="taxNews">З яких джерел ви отримуєте інформацію про податкові новини:</label><br>
+                <input type="checkbox" id="taxNews1" name="taxNews" value="officialWebsites">
+                <label for="taxNews1">Офіційні веб-сайти податкових органів</label><br>
+                <input type="checkbox" id="taxNews2" name="taxNews" value="businessPublications">
+                <label for="taxNews2">Бізнес-публікації</label><br>
+                <input type="checkbox" id="taxNews3" name="taxNews" value="professionalNetworks">
+                <label for="taxNews3">Професійні мережі</label><br>
+                <input type="checkbox" id="taxNews4" name="taxNews" value="socialMedia">
+                <label for="taxNews4">Соціальні медіа</label><br><br>
+
+                <label for="email"> Ведіть свій email</label>
+                <input type="email" id="email" name="email">
+            
+                <button type="submit">Відправити</button>
+        </section>
+        <section>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <div id="searchResults"></div>
+            </div>
+        </section>
+    </main>
+    <script>
+        const searchInput = document.getElementById('searchInput');
+    
+        searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.trim().toLowerCase();
+        const surveyResults = JSON.parse(localStorage.getItem('surveys')) || [];
+        const searchResultsContainer = document.getElementById('searchResults');
+        if (searchResultsContainer) {
+            searchResultsContainer.innerHTML = '';
+        }
+    
+        // Перевірка, чи введений текст не порожній рядок
+        if (searchTerm !== '') {
+            const searchResults = surveyResults.filter(result => {
+                return result.email && result.email.toLowerCase().includes(searchTerm);
+            });
+    
+            if (searchResults.length > 0) {
+                const resultsList = document.createElement('ul');
+                searchResults.forEach(result => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = JSON.stringify(result, null, 2);
+                    resultsList.appendChild(listItem);
+                });
+                searchResultsContainer.appendChild(resultsList);
+            } else {
+                const noResultsMessage = document.createElement('p');
+                noResultsMessage.textContent = 'No results found.';
+                searchResultsContainer.appendChild(noResultsMessage);
+            }
+        }
+    });
+    </script>
+</body>
+<script src="script.js"></script>
+</html>
