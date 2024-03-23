@@ -568,3 +568,61 @@ label {
         margin-top: 0px;
     }
 }
+/*-----------------Ask-------------------------*/
+.slogan-ask {
+    animation: 1.5s ease 0s 1 slideInFromLeft;
+}
+
+.slogan-ask h1 {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 43px;
+    color: #FFFFFF;
+}
+
+.info{
+    box-sizing: border-box;
+    width: 160px;
+    height: 50px;
+    background: #ED4C5C;
+    border: 1.5px solid #ED4C5C;
+    border-radius: 6px;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition-duration: .7s;
+    margin-top: 25px;
+}
+
+/*-----------------Logo-------------------------*/
+.slogan-Logo {
+    animation: 1.5s ease 0s 1 slideInFromLeft;
+}
+
+.slogan-Logo h1 {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 43px;
+    color: #FFFFFF;
+}
+
+/*-----------------Test-------------------------*/
+.main-test{
+    text-align: left;
+   
+}
+
+.question{
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.answer{
+   font-size: 16px;
+}
+
+h3{
+  font-size: 1.2em;
+}
